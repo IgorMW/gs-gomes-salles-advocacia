@@ -47,6 +47,11 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:600}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
 .nav-links a:hover,.nav-links a:focus{color:var(--gold);outline:none}
 .nav-links a:hover::after,.nav-links a:focus::after{width:100%}
+.lang-selector{display:flex;gap:4px;align-items:center;margin-right:8px}
+.lang-btn{background:none;border:1px solid transparent;color:var(--gray);font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.5px;text-transform:uppercase;padding:6px 10px;cursor:pointer;transition:all .3s;border-radius:0;line-height:1}
+.lang-btn:hover,.lang-btn:focus{color:var(--gold);border-color:rgba(184,148,62,.3);outline:none}
+.lang-btn.active{color:var(--gold);border-color:var(--gold);background:rgba(184,148,62,.08)}
+.lang-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .menu-toggle{display:none;cursor:pointer;flex-direction:column;gap:5px;background:none;border:none;padding:8px}
 .menu-toggle span{width:24px;height:2px;background:var(--white);transition:.3s;display:block}
 .menu-toggle[aria-expanded="true"] span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
@@ -120,37 +125,39 @@ footer a{color:var(--gold);text-decoration:none}
 .whatsapp-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25D366;color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:transform .3s,box-shadow .3s}
 .whatsapp-float:hover,.whatsapp-float:focus{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,211,102,.5);outline:none}
 @media(max-width:968px){.about-grid{grid-template-columns:1fr;text-align:center}.contact-inner{grid-template-columns:1fr}.credentials{justify-content:center}}
-@media(max-width:768px){.navbar{padding:0 20px}.nav-links{display:none}.nav-links.active{display:flex;flex-direction:column;position:absolute;top:80px;left:0;width:100%;background:var(--navy);padding:20px 40px 30px;gap:20px}.menu-toggle{display:flex}.hero{padding:100px 20px 80px}.hero p{font-size:.95rem}.section{padding:60px 20px}.contact-section{padding:60px 20px}.contact-form{padding:24px}}
+@media(max-width:768px){.navbar{padding:0 20px}.nav-links{display:none}.nav-links.active{display:flex;flex-direction:column;position:absolute;top:80px;left:0;width:100%;background:var(--navy);padding:20px 40px 30px;gap:20px}.lang-selector{margin-right:12px}.lang-btn{font-size:.7rem;padding:4px 8px}.menu-toggle{display:flex}.hero{padding:100px 20px 80px}.hero p{font-size:.95rem}.section{padding:60px 20px}.contact-section{padding:60px 20px}.contact-form{padding:24px}}
 :focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-<a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+<a href="#main-content" class="skip-link" data-i18n="skipLink">Pular para o conteúdo principal</a>
 <nav class="navbar" aria-label="Navegação principal">
 <div class="navbar-inner">
 <a href="#" class="logo"><img src="assets/gs-logo-dark-bg.png" alt="Gomes Salles, Sociedade Individual de Advocacia — Voltar ao topo" width="160" height="48" fetchpriority="high"></a>
 <ul class="nav-links" id="navLinks" role="menubar">
-<li role="none"><a href="#sobre" role="menuitem">Sobre o Escritório</a></li>
-<li role="none"><a href="#areas" role="menuitem">Áreas de Atuação</a></li>
-<li role="none"><a href="#diferenciais" role="menuitem">Diferenciais</a></li>
-<li role="none"><a href="#contato" role="menuitem">Entre Em Contato</a></li>
+<li role="none"><a href="#sobre" role="menuitem" data-i18n="navSobre">Sobre o Escritório</a></li>
+<li role="none"><a href="#areas" role="menuitem" data-i18n="navAreas">Áreas de Atuação</a></li>
+<li role="none"><a href="#diferenciais" role="menuitem" data-i18n="navDiferenciais">Diferenciais</a></li>
+<li role="none"><a href="#contato" role="menuitem" data-i18n="navContato">Fale Conosco</a></li>
 </ul>
+<div class="lang-selector" role="group" aria-label="Seletor de idioma">
+<button class="lang-btn active" data-lang="pt-BR" aria-pressed="true" aria-label="Português (Brasil)">PT</button>
+<button class="lang-btn" data-lang="en-US" aria-pressed="false" aria-label="American English">EN</button>
+<button class="lang-btn" data-lang="es" aria-pressed="false" aria-label="Español">ES</button>
+</div>
 <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
 </div>
 </nav>
 <main id="main-content">
 <section class="hero" id="inicio">
 <div class="hero-content">
-<p class="hero-tag">Direito Aduaneiro &amp; Comércio Exterior</p>
-<h1>Gomes Salles, Sociedade Individual de Advocacia <br><em>Direito Aduaneiro e Tributário</em></h1>
-<p>Os serviços jurídicos aduaneiros, exercidos no escritório
-Gomes Salles, Sociedade Individual de Advocacia, tem por meta
-principal alcançar a solução jurídica personalizada aos seus Clientes, com a
-maior transparência e segurança.</p>
+<p class="hero-tag" data-i18n-html="heroTag">Direito Aduaneiro &amp; Comércio Exterior</p>
+<h1 data-i18n-html="heroTitle">Gomes Salles, Sociedade Individual de Advocacia <br><em>Direito Aduaneiro e Tributário</em></h1>
+<!-- <p data-i18n-html="heroDesc">Os serviços jurídicos aduaneiros, exercidos no escritório<br>Gomes Salles, Sociedade Individual de Advocacia, tem por meta<br>principal alcançar a solução jurídica personalizada aos seus Clientes, com a<br>maior transparência e segurança.</p> -->
 <div class="hero-buttons">
-<a href="mailto:contato@gomessallesadvocacia.com.br" class="btn-primary">Entre em Contato</a>
-<a href="#areas" class="btn-outline">Nossas Áreas</a>
+<a href="mailto:contato@gomessallesadvocacia.com.br" class="btn-primary" data-i18n="heroCta">Fale Conosco</a>
+<a href="#areas" class="btn-outline" data-i18n="heroCta2">Nossas Áreas</a>
 </div>
 </div>
 </section>
@@ -158,15 +165,16 @@ maior transparência e segurança.</p>
 <div class="section">
 <div class="about-grid">
 <div class="about-text">
-<p class="subtitle">Sobre o Escritório</p>
-<h2>Gomes Salles, Sociedade Individual de Advocacia</h2>
-<p>Os serviços jurídicos aduaneiros, exercidos no escritório Gomes Salles, Sociedade Individual de Advocacia, tem por meta principal alcançar a solução jurídica personalizada aos seus Clientes, com a maior transparência e segurança.</p>
-<p>A dedicação, e o foco em seu trabalho tem por expertise, na composição de conflitos dos Clientes, a mediação, e da arbitragem, como método utilizado em matéria do Direito Aduaneiro e das diversas normas regulatórias, em especial a Gestão Jurídica Aduaneira Internacional, com foco em Global Internacional Business Management.</p>
-<p>Em especial a Gestão Jurídica Aduaneira Internacional, com foco em Global International Business Management.</p>
-<p>Nesta recente história, que resume em breves linhas com experiência desde 2018. O início das suas atividades em modesta estrutura doméstica. O escritório, por seu Fundador Dr. Alexandre Henrique Gomes Salles, no exercício da advocacia, tem observado de perto as necessidades dos seus Clientes, que se deparam com específicas adversidades, no Comércio Exterior.</p>
-<p>Com isso, desenvolveu EXPERTISES profissional personalizadas para seus Clientes, solucionar, com o foco e a meta em aprimorar-se constantemente. Independente do porte do seus clientes, sejam Pessoas Físicas até Empresas Nacionais ou Estrangeiras que visem atuação em Comércio Exterior, a partir daqui do Brasil.</p>
-<p>Sua missão: É a de defender o Direito dos seus clientes extrajudicial ou judicialmente, ante as adversidades em matéria aduaneira. Bem como atuando consultivamente, com efeito a mitigar riscos, em matéria do Comércio Exterior.</p>
+<p class="subtitle" data-i18n="aboutSubtitle">Sobre o Escritório</p>
+<h2 data-i18n="aboutTitle">Gomes Salles, Sociedade Individual de Advocacia</h2>
+<p data-i18n="aboutP1">Os serviços jurídicos aduaneiros, exercidos pelo escritório Gomes Salles, Sociedade Individual de Advocacia, tem por meta principal alcançar a solução jurídica personalizada aos seus Clientes, com a maior transparência e segurança.</p>
+<p data-i18n="aboutP2">A dedicação, e o foco em seu trabalho tem por expertise, na composição de conflitos dos Clientes, a mediação, como método utilizado em matéria do Direito Aduaneiro e das diversas normas regulatórias, em especial a Gestão Jurídica Aduaneira Internacional, com foco a Global Internacional Business Management.</p>
+<p data-i18n="aboutP3">Missão do Escritório, breve relato desde sua origem e seu foco</p>
+<p data-i18n="aboutP4">Nesta recente história, que resume em breves linhas com experiência desde 2018. O início das suas atividades em modesta estrutura doméstica. O escritório, por seu fundador Alexandre Henrique Gomes Salles, no exercício da advocacia, tem observado de perto as necessidades dos seus Clientes, que maioria das vezes, se deparam com específicas adversidades, no Comércio Exterior.</p>
+<p data-i18n="aboutP5">Com isso, desenvolveu expertises profissional personalizadas para seus Clientes, solucionar, com o foco e a meta em aprimorar-se constantemente. Independente do porte do seus sejam Pessoas Físicas até Empresas Nacionais ou Estrangeira. Que visem atuação em Comércio Exterior, a partir daqui no Brasil.</p>
+<p data-i18n="aboutP6">Sua missão: É a de defender o Direito dos seus clientes extrajudicial ou judicialmente, ante as adversidades em matéria aduaneira. Bem como atuando consultivamente, com efeito a mitigar riscos, em matéria do Comércio Exterior.</p>
 <div class="credentials"><span class="credential-badge">IIBA – International Institute of Business Analysis</span></div>
+<div class="credentials"><span class="credential-badge">OAB-RJ</span></div>
 </div>
 </div>
 </div>
@@ -174,39 +182,29 @@ maior transparência e segurança.</p>
 <section class="section" id="areas">
   <div class="section-header">
     <div class="line" aria-hidden="true"></div>
-    <h2>Áreas de Atuação</h2>
-    <p>Os serviços jurídicos Aduaneiros, exercidos pelo Escritório Gomes Salles, Sociedade Individual de Advocacia, têm por meta principal alcançar a solução jurídica personalizada aos seus Clientes, com a maior transparência e segurança.</p>
+<h2 data-i18n="areasTitle">Áreas de Atuação</h2>
+    <p data-i18n="areasDesc">Os serviços jurídicos Aduaneiros, exercidos pelo Escritório Gomes Salles, Sociedade Individual de Advocacia, têm por meta principal alcançar a solução jurídica personalizada aos seus Clientes, com a maior transparência e segurança.</p>
   </div>
   <br>
   <div class="areas-grid areas-grid--two">
-    <article class="area-card">
+<article class="area-card">
       <svg class="icon-area" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M3 7v14M21 7v14M6 7V3h12v4M9 21v-4h6v4M12 7v6M8 11h8"/></svg>
-      <h3><b>Gestão Jurídica Aduaneira Internacional</b></h3>
+      <h3><b data-i18n="areasCard1Title">Gestão Jurídica Aduaneira Internacional</b></h3>
       <ul>
-        <li>Prático em órgãos aduaneiros administrativos, em procedimentos de Comércio Exterior.</li>
-        <li>Crédito documentário, em matéria de classificação fiscal de mercadoria.</li>
-        <li>Documentos exigidos nas operações de Comércio Exterior, no sistema integrado de controle.</li>
-        <li>Documentos de Contrato de Comércio Exterior (Fatura Proforma / Nota Fiscal / Fatura Comercial / Romaneio).</li>
-        <li>Procedimento e modalidade de pagamento / Processo Administrativo Fiscal (consultoria preventiva).</li>
-        <li>Decisões relevantes do CARF e demais órgãos / Instrumentos Jurídicos cabíveis / Processo Civil relativo em matéria Aduaneira, com foco na legislação tributária em Comércio Exterior (Reforma Tributária).</li>
-        <li>Planejamento Tributário, com efeito aos Tributos Incidentes (Elisão Fiscal).</li>
-        <li>Legislação Aduaneira, com efeito ao regime aduaneiro especial adequado (evitando-se infração e penalidades aduaneiras).</li>
+        <li data-i18n="areasCard1Li1">Consultoria e Compliance (Preventivo).</li>
+        <li data-i18n="areasCard1Li2">Contencioso Administrativo e Judicial (Defesa).</li>
+        <li data-i18n="areasCard1Li3">Gestão e Estratégia Internacional (Auditoria Fiscal Aduaneira / Solução de Conflito Transnacional).</li>
       </ul>
     </article>
     <article class="area-card">
       <svg class="icon-area" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-      <h3><b>Global International Business Management</b></h3>
+      <h3><b data-i18n="areasCard2Title">Global International Business Management</b></h3>
       <ul>
-        <li>Consultoria em Análise do ambiente internacional de negócios.</li>
-        <li>Consultoria em Gestão das estratégias de internacionalização Empresarial.</li>
-        <li>Consultoria em Ambiente cultural dos mercados globais.</li>
-        <li>Consultoria em Gestão dos negócios internacionais / Consultoria empresarial.</li>
-        <li>Consultoria em Gestão de preços e custos na exportação e na importação.</li>
-        <li>Consultoria em Gestão do Marketing Global / Supply Chain Management.</li>
-        <li>Consultoria em Gestão das finanças internacionais.</li>
-        <li>Consultoria em Estratégias em Global Sourcing.</li>
-        <li>Consultoria em Gestão de riscos em operações internacionais.</li>
-        <li>Consultoria em Elaboração do plano de negócios.</li>
+        <li data-i18n="areasCard2Li1">Compliance Aduaneiro e Gestão de Risco.</li>
+        <li data-i18n="areasCard2Li2">Estratégia e Eficiência.</li>
+        <li data-i18n="areasCard2Li3">Visão estratégia internacional.</li>
+        <li data-i18n="areasCard2Li4">Gestão Jurídica Aduaneira / Consultoria empresarial.</li>
+        <li data-i18n="areasCard2Li5">Competitividade e Facilitação.</li>
       </ul>
     </article>
   </div>
@@ -215,24 +213,24 @@ maior transparência e segurança.</p>
 <div class="section">
 <div class="section-header">
 <div class="line" aria-hidden="true"></div>
-<h2>Por que nos escolher</h2>
-<p>Dedicação, método e compromisso com a transparência e segurança jurídica.</p>
+<h2 data-i18n="difTitle">Por que nos escolher</h2>
+<p data-i18n="difDesc">Dedicação, método e compromisso com a transparência e segurança jurídica.</p>
 </div>
 <div class="diff-grid">
 <div class="diff-item">
 <div class="number" aria-hidden="true">+8</div>
-<h3>Anos de Atuação Especializada</h3>
-<p>Anos de atuação específica em Direito Aduaneiro e Comércio Exterior.</p>
+<h3 data-i18n="difItem1Title">Anos de Atuação Especializada</h3>
+<p data-i18n="difItem1Desc">Anos de atuação específica em Direito Aduaneiro e Comércio Exterior.</p>
 </div>
 <div class="diff-item">
 <div class="number" aria-hidden="true">100%</div>
-<h3>Foco Estratégico</h3>
-<p>Dedicação ao Direito Aduaneiro e Tributário, com atuação específica e personalizada.</p>
+<h3 data-i18n="difItem2Title">Foco Estratégico</h3>
+<p data-i18n="difItem2Desc">Dedicação ao Direito Aduaneiro e Tributário, com atuação específica e personalizada.</p>
 </div>
 <div class="diff-item">
 <div class="number" aria-hidden="true">360°</div>
-<h3>Assessoria Completa</h3>
-<p>Da consultoria preventiva ao contencioso, mediação e arbitragem em todas as esferas.</p>
+<h3 data-i18n="difItem3Title">Assessoria Completa</h3>
+<p data-i18n="difItem3Desc">Da consultoria preventiva ao contencioso, mediação e arbitragem em todas as esferas.</p>
 </div>
 </div>
 </div>
@@ -240,19 +238,19 @@ maior transparência e segurança.</p>
 <section class="contact-section" id="contato">
 <div class="contact-inner">
 <div class="contact-info">
-<h2>Entre em Contato</h2>
-<p>Para mais informações sobre nossos serviços jurídicos, entre em contato pelos canais digitais abaixo.</p>
+<h2 data-i18n="contactTitle">Fale Conosco</h2>
+<p data-i18n="contactDesc">Para mais informações sobre nossos serviços jurídicos, entre em contato pelos canais digitais abaixo.</p>
 <div class="contact-item">
 <div class="icon-c" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg></div>
-<div><h3>Telefone</h3><p><a href="https://wa.me/5521967063207" target="_blank" rel="noopener noreferrer">(021) 96706-3207 <i>(com APP WhatsApp business)</i></a></p></div>
+<div><h3 data-i18n="contactPhone">Telefone</h3><p><a href="https://wa.me/5521967063207" target="_blank" rel="noopener noreferrer" data-i18n-html="contactPhoneLink">(021) 96706-3207 <i>(com APP WhatsApp business)</i></a></p></div>
 </div>
 <div class="contact-item">
 <div class="icon-c" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-<div><h3>E-mail <i>(Institucional Escritório, EM DESENVOLVIMENTO)</i></h3><p><a href="mailto:contato@gomessallesadvocacia.com.br">contato@gomessallesadvocacia.com.br</a></p></div>
+<div><h3 data-i18n-html="contactEmail">E-mail (Institucional Escritório) - EM DESENVOLVIMENTO</h3><p><a href="mailto:contato@gomessallesadvocacia.com.br">contato@gomessallesadvocacia.com.br</a></p></div>
 </div>
 <div class="contact-item">
 <div class="icon-c" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></div>
-<div><h3>Gomes Salles, Sociedade Individual de Advocacia <i>(EM DESENVOLVIMENTO)</i></h3><p><a href="https://www.linkedin.com/company/gomessallesadvocacia/" target="_blank" rel="noopener noreferrer">Gomes Salles, Sociedade Individual de Advocacia</a></p></div>
+<div><h3 data-i18n-html="contactLinkedin">Rede Social (escritório) - LinkedIn em desenvolvimento</h3><p><a href="https://www.linkedin.com/company/gomessallesadvocacia/" target="_blank" rel="noopener noreferrer" data-i18n="contactLinkedinLink">Gomes Salles, Sociedade Individual de Advocacia</a></p></div>
 </div>
 </div>
 <!-- <div class="contact-form">
@@ -270,7 +268,48 @@ maior transparência e segurança.</p>
 </div>
 </section>
 </main>
-<footer><div class="footer-inner"><p>&copy; <span id="yr"></span> Gomes Salles, Sociedade Individual de Advocacia. Todos os direitos reservados.</p></div></footer>
+<footer><div class="footer-inner"><p>&copy; <span id="yr"></span> <span data-i18n="siteName">Gomes Salles, Sociedade Individual de Advocacia</span>. <span data-i18n="footer">Todos os direitos reservados.</span></p></div></footer>
+<script>
+var I18N={};I18N['pt-BR']={navSobre:"Sobre o Escritório",navAreas:"Áreas de Atuação",navDiferenciais:"Diferenciais",navContato:"Fale Conosco",skipLink:"Pular para o conteúdo principal",menuToggle:"Abrir menu de navegação",langLabel:"Seletor de idioma",whatsappLabel:"Entrar em contato pelo WhatsApp",heroTag:"Direito Aduaneiro &amp; Comércio Exterior",heroTitle:"Gomes Salles, Sociedade Individual de Advocacia <br><em>Direito Aduaneiro e Tributário</em>",heroDesc:"Os serviços jurídicos aduaneiros, exercidos no escritório<br>Gomes Salles, Sociedade Individual de Advocacia, tem por meta<br>principal alcançar a solução jurídica personalizada aos seus Clientes, com a<br>maior transparência e segurança.",heroCta:"Fale Conosco",heroCta2:"Nossas Áreas",aboutSubtitle:"Sobre o Escritório",aboutTitle:"Gomes Salles, Sociedade Individual de Advocacia",aboutP1:"Os serviços jurídicos aduaneiros, exercidos no escritório Gomes Salles, Sociedade Individual de Advocacia, tem por meta principal alcançar a solução jurídica personalizada aos seus Clientes, com a maior transparência e segurança.",aboutP2:"A dedicação, e o foco em seu trabalho tem por expertise, na composição de conflitos dos Clientes, a mediação, e da arbitragem, como método utilizado em matéria do Direito Aduaneiro e das diversas normas regulatórias, em especial a Gestão Jurídica Aduaneira Internacional, com foco em Global Internacional Business Management.",aboutP3:"Em especial a Gestão Jurídica Aduaneira Internacional, com foco em Global International Business Management.",aboutP4:"Nesta recente história, que resume em breves linhas com experiência desde 2018. O início das suas atividades em modesta estrutura doméstica. O escritório, por seu Fundador Dr. Alexandre Henrique Gomes Salles, no exercício da advocacia, tem observado de perto as necessidades dos seus Clientes, que se deparam com específicas adversidades, no Comércio Exterior.",aboutP5:"Com isso, desenvolveu EXPERTISES profissional personalizadas para seus Clientes, solucionar, com o foco e a meta em aprimorar-se constantemente. Independente do porte do seus clientes, sejam Pessoas Físicas até Empresas Nacionais ou Estrangeiras que visem atuação em Comércio Exterior, a partir daqui do Brasil.",aboutP6:"Sua missão: É a de defender o Direito dos seus clientes extrajudicial ou judicialmente, ante as adversidades em matéria aduaneira. Bem como atuando consultivamente, com efeito a mitigar riscos, em matéria do Comércio Exterior.",areasTitle:"Áreas de Atuação",areasDesc:"Os serviços jurídicos Aduaneiros, exercidos pelo Escritório Gomes Salles, Sociedade Individual de Advocacia, têm por meta principal alcançar a solução jurídica personalizada aos seus Clientes, com a maior transparência e segurança.",areasCard1Title:"Gestão Jurídica Aduaneira Internacional",areasCard1Li1:"Consultoria e Compliance (Preventivo).",areasCard1Li2:"Contencioso Administrativo e Judicial (Defesa).",areasCard1Li3:"Gestão e Estratégia Internacional (Auditoria Fiscal Aduaneira / Solução de Conflito Transnacional).",areasCard2Title:"Global International Business Management",areasCard2Li1:"Compliance Aduaneiro e Gestão de Risco.",areasCard2Li2:"Estratégia e Eficiência.",areasCard2Li3:"Visão Estratégia Internacional.",areasCard2Li4:"Gestão Jurídica Aduaneira / Consultoria Empresarial.",areasCard2Li5:"Competitividade e Facilitação.",difTitle:"Por que nos escolher",difDesc:"Dedicação, método e compromisso com a transparência e segurança jurídica.",difItem1Title:"Anos de Atuação Especializada",difItem1Desc:"Anos de atuação específica em Direito Aduaneiro e Comércio Exterior.",difItem2Title:"Foco Estratégico",difItem2Desc:"Dedicação ao Direito Aduaneiro e Tributário, com atuação específica e personalizada.",difItem3Title:"Assessoria Completa",difItem3Desc:"Da consultoria preventiva ao contencioso, mediação e arbitragem em todas as esferas.",contactTitle:"Fale Conosco",contactDesc:"Para mais informações sobre nossos serviços jurídicos, entre em contato pelos canais digitais abaixo.",contactPhone:"Telefone",contactPhoneLink:"(021) 96706-3207 <i>(com APP WhatsApp business)</i>",contactEmail:"E-mail <i>(Institucional Escritório, EM DESENVOLVIMENTO)</i>",contactLinkedin:"Gomes Salles, Sociedade Individual de Advocacia <i>(EM DESENVOLVIMENTO)</i>",contactLinkedinLink:"Gomes Salles, Sociedade Individual de Advocacia",footer:"Todos os direitos reservados.",siteName:"Gomes Salles, Sociedade Individual de Advocacia",siteTagline:"Direito Aduaneiro e Tributário"};
+I18N['en-US']={navSobre:"About the Firm",navAreas:"Practice Areas",navDiferenciais:"Why Choose Us",navContato:"Contact Us",skipLink:"Skip to main content",menuToggle:"Open navigation menu",langLabel:"Language selector",whatsappLabel:"Contact via WhatsApp",heroTag:"Customs Law &amp; International Trade",heroTitle:"Gomes Salles, Sociedade Individual de Advocacia <br><em>Customs and Tax Law</em>",heroDesc:"The customs legal services provided by<br>Gomes Salles, Sociedade Individual de Advocacia aim primarily<br>to deliver personalized legal solutions to its Clients, with the<br>utmost transparency and security.",heroCta:"Get in Touch",heroCta2:"Our Practice Areas",aboutSubtitle:"About the Firm",aboutTitle:"Gomes Salles, Sociedade Individual de Advocacia",aboutP1:"The customs legal services provided by Gomes Salles, Sociedade Individual de Advocacia aim primarily to deliver personalized legal solutions to its Clients, with the utmost transparency and security.",aboutP2:"Dedication and focus on its work are grounded in expertise in conflict resolution for Clients, through mediation and arbitration, as a method applied in Customs Law and various regulatory frameworks, particularly International Customs Legal Management, with a focus on Global International Business Management.",aboutP3:"Especially International Customs Legal Management, with a focus on Global International Business Management.",aboutP4:"In this recent history, which can be summarized in a few lines with experience dating back to 2018 — its activities began in a modest home office structure. The firm, through its Founder Dr. Alexandre Henrique Gomes Salles, practicing law, has closely observed the needs of its Clients who face specific challenges in International Trade.",aboutP5:"As a result, it developed customized professional EXPERTISE for its Clients, to provide solutions, with constant focus on continuous improvement. Regardless of the size of its clients — whether Individuals or National or Foreign Companies seeking to operate in International Trade from Brazil.",aboutP6:"Its mission: To defend Clients' rights out of court or in court, in the face of customs-related challenges. As well as providing advisory services aimed at mitigating risks in International Trade matters.",areasTitle:"Practice Areas",areasDesc:"The Customs legal services provided by Gomes Salles, Sociedade Individual de Advocacia aim primarily to deliver personalized legal solutions to its Clients, with the utmost transparency and security.",areasCard1Title:"International Customs Legal Management",areasCard1Li1:"Consulting and Compliance (Preventive).",areasCard1Li2:"Administrative and Judicial Litigation (Defense).",areasCard1Li3:"International Management and Strategy (Customs Tax Audit / Transnational Dispute Resolution).",areasCard2Title:"Global International Business Management",areasCard2Li1:"Customs Compliance and Risk Management.",areasCard2Li2:"Strategy and Efficiency.",areasCard2Li3:"International Strategic Vision.",areasCard2Li4:"Customs Legal Management / Business Consulting.",areasCard2Li5:"Competitiveness and Facilitation.",difTitle:"Why Choose Us",difDesc:"Dedication, method, and commitment to transparency and legal security.",difItem1Title:"Years of Specialized Practice",difItem1Desc:"Years of specific expertise in Customs Law and International Trade.",difItem2Title:"Strategic Focus",difItem2Desc:"Dedication to Customs and Tax Law, with specific and personalized service.",difItem3Title:"360° Comprehensive Counsel",difItem3Desc:"From preventive advisory to litigation, mediation, and arbitration in all spheres.",contactTitle:"Contact US",contactDesc:"For more information about our legal services, please contact us through the digital channels below.",contactPhone:"Phone",contactPhoneLink:"(021) 96706-3207 <i>(via APP WhatsApp Business)</i>",contactEmail:"Email <i>(Firm Institutional — UNDER DEVELOPMENT)</i>",contactLinkedin:"Gomes Salles, Sociedade Individual de Advocacia <i>(UNDER DEVELOPMENT)</i>",contactLinkedinLink:"Gomes Salles, Sociedade Individual de Advocacia",footer:"All rights reserved.",siteName:"Gomes Salles, Sociedade Individual de Advocacia",siteTagline:"Customs and Tax Law"};
+I18N.es={navSobre:"Sobre el Despacho",navAreas:"Áreas de Práctica",navDiferenciais:"Diferenciadores",navContato:"Contáctenos",skipLink:"Saltar al contenido principal",menuToggle:"Abrir menú de navegación",langLabel:"Selector de idioma",whatsappLabel:"Contactar por WhatsApp",heroTag:"Derecho Aduanero &amp; Comercio Exterior",heroTitle:"Gomes Salles, Sociedade Individual de Advocacia <br><em>Derecho Aduanero y Tributario</em>",heroDesc:"Los servicios jurídicos aduaneros prestados por<br>Gomes Salles, Sociedade Individual de Advocacia tienen como meta<br>principal alcanzar la solución jurídica personalizada para sus Clientes, con la<br>mayor transparencia y seguridad.",heroCta:"Contactar",heroCta2:"Nuestras Áreas",aboutSubtitle:"Sobre el Despacho",aboutTitle:"Gomes Salles, Sociedade Individual de Advocacia",aboutP1:"Los servicios jurídicos aduaneros prestados por Gomes Salles, Sociedade Individual de Advocacia tienen como meta principal alcanzar la solución jurídica personalizada para sus Clientes, con la mayor transparencia y seguridad.",aboutP2:"La dedicación y el enfoque en su trabajo se sustentan en la experiencia en la resolución de conflictos de los Clientes, la mediación y el arbitraje, como método utilizado en materia de Derecho Aduanero y de las diversas normas regulatorias, en especial la Gestión Jurídica Aduanera Internacional, con enfoque en Global International Business Management.",aboutP3:"En especial la Gestión Jurídica Aduanera Internacional, con enfoque en Global International Business Management.",aboutP4:"En esta historia reciente, que se resume en breves líneas con experiencia desde 2018 — el inicio de sus actividades en una modesta estructura doméstica. El despacho, por su Fundador Dr. Alexandre Henrique Gomes Salles, en el ejercicio de la abogacía, ha observado de cerca las necesidades de sus Clientes, que enfrentan adversidades específicas en el Comercio Exterior.",aboutP5:"Con ello, desarrolló EXPERTISES profesionales personalizadas para sus Clientes, para solucionar, con el enfoque y la meta de perfeccionarse constantemente. Independientemente del tamaño de sus clientes, sean Personas Físicas o Empresas Nacionales o Extranjeras que busquen actuar en Comercio Exterior, desde Brasil.",aboutP6:"Su misión: Defender el Derecho de sus clientes extrajudicial o judicialmente, ante las adversidades en materia aduanera. Así como actuar de forma consultiva, con el fin de mitigar riesgos en materia de Comercio Exterior.",areasTitle:"Áreas de Práctica",areasDesc:"Los servicios jurídicos aduaneros prestados por el Despacho Gomes Salles, Sociedade Individual de Advocacia tienen como meta principal alcanzar la solución jurídica personalizada para sus Clientes, con la mayor transparencia y seguridad.",areasCard1Title:"Gestión Jurídica Aduanera Internacional",areasCard1Li1:"Consultoría y Cumplimiento (Preventivo).",areasCard1Li2:"Litigios Administrativos y Judiciales (Defensa).",areasCard1Li3:"Gestión y Estrategia Internacional (Auditoría Fiscal Aduanera / Resolución de Controversias Transnacionales).",areasCard2Title:"Global International Business Management",areasCard2Li1:"Compliance Aduaneiro e Gestão de Risco.",areasCard2Li2:"Estrategia y Eficiencia.",areasCard2Li3:"Visión Estratégica Internacional.",areasCard2Li4:"Gestión Legal Aduanera / Consultoría Empresarial.",areasCard2Li5:"Competitividad y Facilitación.",difTitle:"Por qué elegirnos",difDesc:"Dedicación, método y compromiso con la transparencia y seguridad jurídica.",difItem1Title:"Años de Práctica Especializada",difItem1Desc:"Años de práctica específica en Derecho Aduanero y Comercio Exterior.",difItem2Title:"Enfoque Estratégico",difItem2Desc:"Dedicación al Derecho Aduanero y Tributario, con servicio específico y personalizado.",difItem3Title:"Asesoría Completa",difItem3Desc:"Desde la consultoría preventiva hasta el contencioso, mediación y arbitraje en todas las esferas.",contactTitle:"Contáctenos",contactDesc:"Para más información sobre nuestros servicios jurídicos, contáctenos a través de los canales digitales abajo.",contactPhone:"Teléfono",contactPhoneLink:"(021) 96706-3207 <i>(vía APP WhatsApp Business)</i>",contactEmail:"Correo Electrónico <i>(Institucional del Despacho — EN DESARROLLO)</i>",contactLinkedin:"Gomes Salles, Sociedade Individual de Advocacia <i>(EN DESARROLLO)</i>",contactLinkedinLink:"Gomes Salles, Sociedade Individual de Advocacia",footer:"Todos los derechos reservados.",siteName:"Gomes Salles, Sociedade Individual de Advocacia",siteTagline:"Derecho Aduanero y Tributario"};
+
+var _t=function(k,l){return(I18N[l]&&I18N[l][k])||(I18N['pt-BR'][k]||k)};
+
+var _apply=function(l){var h=document.documentElement;h.setAttribute('lang',l);
+// Title
+var n=_t('siteName',l),t=_t('siteTagline',l);document.title=n+' \u2013 '+t;
+// Meta
+var m=document.querySelector('meta[name="description"]');if(m)m.setAttribute('content',_t('aboutP1',l));
+m=document.querySelector('meta[name="keywords"]');
+var kw={'pt-BR':'Advocacia Aduaneira,Direito Aduaneiro Rio de Janeiro,Direito Tributário,Comércio Exterior,Contencioso Aduaneiro,Gestão Jurídica Aduaneira Internacional','en-US':'Customs Law,Customs Law Rio de Janeiro,Tax Law,International Trade,Customs Litigation,International Customs Legal Management',es:'Derecho Aduanero,Derecho Aduanero Río de Janeiro,Derecho Tributario,Comercio Exterior,Contencioso Aduanero,Gestión Jurídica Aduanera Internacional'};
+if(m)m.setAttribute('content',kw[l]||kw['pt-BR']);
+m=document.querySelector('meta[property="og:title"]');if(m)m.setAttribute('content',n+' \u2013 '+t);
+m=document.querySelector('meta[property="og:description"]');if(m)m.setAttribute('content',_t('aboutP1',l));
+m=document.querySelector('meta[property="og:locale"]');
+var loc={'pt-BR':'pt_BR','en-US':'en_US',es:'es_ES'};
+if(m)m.setAttribute('content',loc[l]||'pt_BR');
+m=document.querySelector('meta[name="twitter:title"]');if(m)m.setAttribute('content',n+' \u2013 '+t);
+m=document.querySelector('meta[name="twitter:description"]');if(m)m.setAttribute('content',_t('aboutP1',l));
+// Text content
+[].forEach.call(document.querySelectorAll('[data-i18n]'),function(el){el.textContent=_t(el.getAttribute('data-i18n'),l)});
+// HTML content
+[].forEach.call(document.querySelectorAll('[data-i18n-html]'),function(el){el.innerHTML=_t(el.getAttribute('data-i18n-html'),l)});
+// Aria labels
+var mt=document.getElementById('menuToggle');if(mt)mt.setAttribute('aria-label',_t('menuToggle',l));
+var ls=document.querySelector('.lang-selector');if(ls)ls.setAttribute('aria-label',_t('langLabel',l));
+var wa=document.querySelector('.whatsapp-float');if(wa)wa.setAttribute('aria-label',_t('whatsappLabel',l));
+// Skip link
+var sk=document.querySelector('.skip-link');if(sk)sk.textContent=_t('skipLink',l)};
+
+;(function(){var btns=document.querySelectorAll('.lang-btn');var html=document.documentElement;var saved=localStorage.getItem('lang');var cur=saved||'pt-BR';
+btns.forEach(function(b){b.classList.toggle('active',b.dataset.lang===cur);b.setAttribute('aria-pressed',b.dataset.lang===cur?'true':'false')});
+_apply(cur);
+btns.forEach(function(b){b.addEventListener('click',function(){var l=b.dataset.lang;
+btns.forEach(function(x){x.classList.remove('active');x.setAttribute('aria-pressed','false')});
+b.classList.add('active');b.setAttribute('aria-pressed','true');
+localStorage.setItem('lang',l);_apply(l);document.dispatchEvent(new CustomEvent('langChange',{detail:{lang:l}}))})})})();
+</script>
 <a href="https://wa.me/5521967063207?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20especializada." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Entrar em contato pelo WhatsApp"><svg width="32" height="32" fill="#fff" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 <!-- <script>
 document.getElementById('yr').textContent=new Date().getFullYear();
